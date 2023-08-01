@@ -1,0 +1,56 @@
+"""
+Link : https://www.hackerrank.com/contests/hope-70-days-challenge/challenges/icecream-parlor
+Function Description
+
+Complete the icecreamParlor function in the editor below.
+
+icecreamParlor has the following parameter(s):
+
+int m: the amount of money they have to spend
+int cost[n]: the cost of each flavor of ice cream
+"""
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'icecreamParlor' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts following parameters:
+#  1. INTEGER m
+#  2. INTEGER_ARRAY arr
+#
+
+def icecreamParlor(m, arr):
+    has={}
+    for i in range(len(arr)):
+        x=m-arr[i]
+        if x in has.keys():
+            return [has[x]+1,i+1]
+        else:
+            has[arr[i]]=i 
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        m = int(input().strip())
+
+        n = int(input().strip())
+
+        arr = list(map(int, input().rstrip().split()))
+
+        result = icecreamParlor(m, arr)
+
+        fptr.write(' '.join(map(str, result)))
+        fptr.write('\n')
+
+    fptr.close()
+
